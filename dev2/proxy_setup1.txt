@@ -1,0 +1,461 @@
+#######################################
+#######################################
+#######################################
+NETWORK SETTINGS FOR PROXY SERVER:
+ens20 - INTERNET INTERFACE
+ens19 - TO PROXY CLIENT
+ens18 - MGMT
+--------------
+ra@dev-proxy:~/proxy$ sudo cat /etc/netplan/00-installer-config.yaml 
+[sudo] password for ra: 
+network:
+  ethernets:
+    ens18:
+      dhcp4: no
+      addresses:
+      - 10.0.108.105/24
+      routes:
+      - to: 192.168.1.0/24
+        via: 10.0.108.1
+    ens19:
+      dhcp4: no
+      addresses:
+      - 10.0.156.105/24
+    ens20:
+      dhcp4: yes
+#######################################
+#######################################
+#######################################
+NETWORK SETTINGS FOR PROXY CLIENT:
+ens19 - TO PROXY SERVER
+ens18 - MGMT
+--------------
+ra@dev-proxy-client1:~$ sudo cat /etc/netplan/00-installer-config.yaml 
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    ens18:
+      dhcp4: no
+      addresses:
+      - 10.0.108.106/24
+      routes:
+      - to: 192.168.1.0/24
+        via: 10.0.108.1
+    ens19:
+      dhcp4: no
+      addresses:
+      - 10.0.156.106/24
+  version: 2
+#######################################
+#######################################
+#######################################
+SETUP ON PROXY SERVER:
+mkdir proxy
+cd proxy/
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip setuptools
+pip install proxy.py
+proxy --hostname 10.0.156.105
+#######################################
+#######################################
+#######################################
+SETUP ON PROXY CLIENT:
+export http_proxy="http://10.0.156.105:8899"
+export https_proxy="http://10.0.156.105:8899"
+export ftp_proxy="http://10.0.156.105:8899"
+curl -v https://example.com
+--------------
+APT update with proxy:
+sudo apt-get -o Acquire::http::Proxy="http://10.0.156.105:8899" \
+             -o Acquire::https::Proxy="http://10.0.156.105:8899" update
+--------------
+INSTALL proxytunnel with proxy:
+sudo apt-get -o Acquire::http::Proxy="http://10.0.156.105:8899" \
+             -o Acquire::https::Proxy="http://10.0.156.105:8899" \
+             install proxytunnel -y
+---------------
+CREATE AND MODIFY SSH config for outbound ssh connections:
+mkdir -p ~/.ssh
+nano ~/.ssh/config
+///
+Host *
+    ProxyCommand proxytunnel -p 10.0.156.105:8899 -d %h:%p
+    ServerAliveInterval 10
+    ServerAliveCountMax 3
+///
+chmod 600 ~/.ssh/config
+---------------
+CHECK:
+ssh ra@10.0.200.157
+---------------
+---------------
+INSTALL NMAP with proxy:
+sudo apt-get -o Acquire::http::Proxy="http://10.0.156.105:8899" \
+             -o Acquire::https::Proxy="http://10.0.156.105:8899" \
+             install nmap
+---------------
+INSTALL CURL:
+sudo apt-get -o Acquire::http::Proxy="http://10.0.156.105:8899" \
+             -o Acquire::https::Proxy="http://10.0.156.105:8899" \
+             install curl
+---------------
+INSTALL PYTHON:
+sudo apt-get -o Acquire::http::Proxy="http://10.0.156.105:8899" \
+             -o Acquire::https::Proxy="http://10.0.156.105:8899" \
+             install python3.10-venv
+---------------
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip setuptools
+pip install <package>
+---------------
+---------------
+history -c
+rm ~/.bash_history
+---------------
+---------------
+
+pip install nornir
+pip install nornir_netmiko
+pip install pandas
+pip install tqdm
+pip install nornir_scrapli
+pip install genie
+pip install pyats
+
+---------------
+
+IOS:
+ra@dev:~/dev/ios/test$ cat cisco_ios_show_ip_interface_brief.textfsm 
+Value INTF (\S+)
+Value IPADDR (\S+)
+Value STATUS (up|down|administratively down)
+Value PROTO (up|down)
+
+Start
+  ^${INTF}\s+${IPADDR}\s+\w+\s+\w+\s+${STATUS}\s+${PROTO} -> Record
+  # Capture time-stamp if vty line has command time-stamping turned on
+  ^Load\s+for\s+
+  ^Time\s+source\s+is
+ra@dev:~/dev/ios/test$ cat config.yaml 
+inventory:
+       plugin: SimpleInventory
+       options:
+            host_file: 'hosts.yaml'
+            defaults_file: 'defaults.yaml'
+runner:
+       plugin: threaded
+       options:
+            num_workers: 20
+ra@dev:~/dev/ios/test$ cat defaults.yaml 
+username: admin
+password: ciscocisco
+connection_options:
+  scrapli:
+    extras:
+      auth_strict_key: false
+ra@dev:~/dev/ios/test$ cat hosts.yaml 
+R1:
+  hostname: 10.0.108.36
+  platform: ios
+R2:
+  hostname: 10.0.108.37
+  platform: ios
+R3:
+  hostname: 10.0.108.38
+  platform: ios
+ra@dev:~/dev/ios/test$ cat print_info.py 
+from nornir import InitNornir
+from nornir_netmiko.tasks import netmiko_send_command
+from nornir_utils.plugins.functions import print_result
+
+nr = InitNornir(config_file="config.yaml")
+
+data = []
+
+def pull_info(task, command):
+    hostname = task.host.name
+    result = task.run(task=netmiko_send_command, command_string=command, use_textfsm=True, textfsm_template="cisco_ios_show_ip_interface_brief.textfsm", read_timeout=200)
+    parsed_output = result.result
+    for record in parsed_output:
+        indata = {"hostname": hostname, **record}
+        data.append([indata['hostname'],
+                     indata['intf'],
+                     indata['ipaddr'],
+                     indata['status'],
+                     indata['proto']
+                     ])
+
+nr.run(task=pull_info, command="show ip interface brief")
+
+print(data)
+ra@dev:~/dev/ios/test$ cat export_csv.py 
+import pandas as pd
+from nornir import InitNornir
+from nornir_netmiko.tasks import netmiko_send_command
+from tqdm import tqdm
+
+nr = InitNornir(config_file="config.yaml")
+
+data = []
+
+def pull_info(task, progress_bar, command="show ip interface brief"):
+    hostname = task.host.name
+    result = task.run(task=netmiko_send_command, command_string=command, use_textfsm=True, textfsm_template="cisco_ios_show_ip_interface_brief.textfsm", read_timeout=200)
+    parsed_output = result.result
+    for record in parsed_output:
+        indata = {"hostname": hostname, **record}
+        data.append([indata['hostname'],
+                     indata['intf'],
+                     indata['ipaddr'],
+                     indata['status'],
+                     indata['proto']
+                     ])
+    progress_bar.update()
+
+def drop_to_csv():
+    with tqdm(total=len(nr.inventory.hosts)) as progress_bar:
+        nr.run(task=pull_info, progress_bar=progress_bar)
+    df = pd.DataFrame(data, columns=['hostname',
+                                     'intf',
+                                     'ipaddr',
+                                     'status',
+                                     'proto'])
+    df.to_csv("int_br.csv", index=False)
+    print(f"Total number of devices: {len(nr.inventory.hosts)}")
+    failed_hosts = nr.data.failed_hosts
+    if failed_hosts:
+        print(f"Number of failed hosts: {len(failed_hosts)}")
+        print(f"List of failed_hosts: {failed_hosts}")
+
+drop_to_csv()
+
+---------------
+
+ASA:
+ra@dev:~/dev/asa/test$ cat hosts.yaml 
+A1:
+  hostname: 10.0.108.32
+  platform: cisco_asa
+A2:
+  hostname: 10.0.108.33
+  platform: cisco_asa
+ra@dev:~/dev/asa/test$ cat cisco_asa_show_interface_ip_brief.textfsm 
+Value INTF (\S+)
+Value IPADDR (\S+)
+Value STATUS (up|down|administratively down)
+Value PROTO (up|down)
+
+Start
+  ^Interface\s+IP-Address\s+OK\?\s+Method\s+Status\s+Protocol\s*$$
+  ^${INTF}\s+${IPADDR}\s+\w+\s+\w+\s+${STATUS}\s+${PROTO} -> Record
+  ^\s*$$
+  ^. -> Error
+ra@dev:~/dev/asa/test$ cat print_info.py 
+from nornir import InitNornir
+from nornir_netmiko.tasks import netmiko_send_command
+from nornir_utils.plugins.functions import print_result
+
+nr = InitNornir(config_file="config.yaml")
+
+data = []
+
+def pull_info(task, command):
+    hostname = task.host.name
+    result = task.run(task=netmiko_send_command, command_string=command, use_textfsm=True, textfsm_template="cisco_asa_show_interface_ip_brief.textfsm", read_timeout=200)
+    parsed_output = result.result
+    for record in parsed_output:
+        indata = {"hostname": hostname, **record}
+        data.append([indata['hostname'],
+                     indata['intf'],
+                     indata['ipaddr'],
+                     indata['status'],
+                     indata['proto']
+                     ])
+
+nr.run(task=pull_info, command="show interface ip brief")
+
+print(data)
+
+---------------
+
+NXOS:
+ra@dev:~/dev/nxos/test$ cat hosts.yaml 
+NX1:
+  hostname: 10.0.108.34
+  platform: nxos
+NX2:
+  hostname: 10.0.108.35
+  platform: nxos
+ra@dev:~/dev/nxos/test$ cat cisco_nxos_show_vlan.textfsm 
+Value Required VLAN_ID (\d+)
+Value NAME (\S+)
+Value STATUS (\S+)
+Value List INTERFACES ([\w\./]+)
+
+Start
+  ^VLAN\s+Name\s+Status\s+Ports -> VLANS
+  ^VLAN\s+Type\s+Vlan-mode
+  ^Remote\s+SPAN\s+VLANs
+  ^Primary\s+Secondary\s+Type\s+Ports
+
+VLANS
+  ^\d+ -> Continue.Record
+  ^${VLAN_ID}\s+${NAME}\s+${STATUS}\s*$$
+  ^${VLAN_ID}\s+${NAME}\s+${STATUS}\s+${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){3}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){4}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){5}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){6}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){7}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){8}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){9}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){10}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){11}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){12}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){13}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){14}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){15}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){16}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){17}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){18}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){19}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){20}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){21}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){22}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){23}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){24}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){25}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){26}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){27}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){28}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){29}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){30}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){31}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){32}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){33}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){34}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){35}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){36}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){37}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){38}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){39}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){40}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){41}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){42}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){43}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){44}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){45}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){46}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){47}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){48}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){49}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){50}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){51}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){52}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){53}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){54}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){55}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){56}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){57}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){58}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){59}${INTERFACES},* -> Continue
+  ^\d+\s+(?:\S+\s+){60}${INTERFACES},* -> Continue
+  ^\s+${INTERFACES},* -> Continue
+  ^\s+\S+\s+${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){2}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){3}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){4}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){5}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){6}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){7}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){8}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){9}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){10}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){11}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){12}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){13}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){14}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){15}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){16}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){17}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){18}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){19}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){20}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){21}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){22}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){23}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){24}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){25}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){26}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){27}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){28}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){29}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){30}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){31}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){32}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){33}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){34}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){35}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){36}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){37}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){38}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){39}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){40}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){41}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){42}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){43}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){44}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){45}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){46}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){47}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){48}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){49}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){50}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){51}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){52}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){53}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){54}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){55}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){56}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){57}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){58}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){59}${INTERFACES},* -> Continue
+  ^\s+(?:\S+\s+){60}${INTERFACES},* -> Continue
+  ^\d+
+  ^\s+
+  ^-+
+  ^\S+\s+[TtYyPpEe]{4} -> Done
+  ^\s*$$
+  ^. -> Error
+
+Done
+  ^.*
+ra@dev:~/dev/nxos/test$ cat print_info.py 
+from nornir import InitNornir
+from nornir_netmiko.tasks import netmiko_send_command
+from nornir_utils.plugins.functions import print_result
+
+nr = InitNornir(config_file="config.yaml")
+
+data = []
+
+def pull_info(task, command):
+    hostname = task.host.name
+    result = task.run(task=netmiko_send_command, command_string=command, use_textfsm=True, textfsm_template="cisco_nxos_show_vlan.textfsm", read_timeout=200)
+    parsed_output = result.result
+    for record in parsed_output:
+        indata = {"hostname": hostname, **record}
+        data.append([indata['hostname'],
+                     indata['vlan_id'],
+                     indata['name'],
+                     indata['status'],
+                     indata['interfaces']
+                     ])
+
+nr.run(task=pull_info, command="show vlan")
+
+print(data)
+
+---------------
