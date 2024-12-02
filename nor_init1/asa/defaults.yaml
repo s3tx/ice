@@ -1,0 +1,6 @@
+username: admin
+password: ciscocisco
+connection_options:
+  scrapli:
+    extras:
+      auth_strict_key: false
