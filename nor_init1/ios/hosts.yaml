@@ -1,9 +1,9 @@
 R1:
-  hostname: 10.0.108.36
+  hostname: 10.0.105.11
   platform: ios
 R2:
-  hostname: 10.0.108.37
+  hostname: 10.0.105.12
   platform: ios
 R3:
-  hostname: 10.0.108.38
+  hostname: 10.0.105.13
   platform: ios
