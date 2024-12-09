@@ -1,0 +1,9 @@
+sudo apt update 
+sudo apt install wireguard -y
+sudo apt install resolvconf -y
+sudo mv wg0-client-cl1w.conf /etc/wireguard/wg0.conf
+sudo chmod 600 /etc/wireguard/wg0.conf
+sudo wg-quick up wg0
+sudo wg
+sudo systemctl enable wg-quick@wg0
+mtr 1.1.1.1
