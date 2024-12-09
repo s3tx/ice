@@ -1,0 +1,197 @@
+ra@dev-proxy:~/ice/dev1$ chmod +x wireguard-install.sh 
+ra@dev-proxy:~/ice/dev1$ sudo ./wireguard-install.sh 
+Welcome to the WireGuard installer!
+The git repository is available at: https://github.com/angristan/wireguard-install
+
+I need to ask you a few questions before starting the setup.
+You can keep the default options and just press enter if you are ok with them.
+
+IPv4 or IPv6 public address: 10.0.156.106
+Public interface: ens20^C
+ra@dev-proxy:~/ice/dev1$ sudo ./wireguard-install.sh 
+Welcome to the WireGuard installer!
+The git repository is available at: https://github.com/angristan/wireguard-install
+
+I need to ask you a few questions before starting the setup.
+You can keep the default options and just press enter if you are ok with them.
+
+IPv4 or IPv6 public address: 10.0.156.105
+Public interface: ens20
+WireGuard interface name: wg0
+Server WireGuard IPv4: 10.66.66.1
+Server WireGuard IPv6: fd42:42:42::1
+Server WireGuard port [1-65535]: 63111
+First DNS resolver to use for the clients: 1.1.1.1
+Second DNS resolver to use for the clients (optional): 1.0.0.1
+
+WireGuard uses a parameter called AllowedIPs to determine what is routed over the VPN.
+Allowed IPs list for generated clients (leave default to route everything): 0.0.0.0/0,::/0
+
+Okay, that was all I needed. We are ready to setup your WireGuard server now.
+You will be able to generate a client at the end of the installation.
+Press any key to continue...
+Hit:1 http://ua.archive.ubuntu.com/ubuntu jammy InRelease
+Hit:2 http://ua.archive.ubuntu.com/ubuntu jammy-updates InRelease                                    
+Hit:3 http://ua.archive.ubuntu.com/ubuntu jammy-backports InRelease                                                        
+Hit:4 http://security.ubuntu.com/ubuntu jammy-security InRelease                                                           
+Hit:5 https://packagecloud.io/ookla/speedtest-cli/ubuntu jammy InRelease                             
+Reading package lists... Done                                  
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+iptables is already the newest version (1.8.7-1ubuntu5.2).
+iptables set to manually installed.
+The following additional packages will be installed:
+  libqrencode4 wireguard-tools
+The following NEW packages will be installed:
+  libqrencode4 qrencode resolvconf wireguard wireguard-tools
+0 upgraded, 5 newly installed, 0 to remove and 79 not upgraded.
+Need to get 194 kB of archives.
+After this operation, 681 kB of additional disk space will be used.
+Get:1 http://ua.archive.ubuntu.com/ubuntu jammy/universe amd64 libqrencode4 amd64 4.1.1-1 [24.0 kB]
+Get:2 http://ua.archive.ubuntu.com/ubuntu jammy/universe amd64 qrencode amd64 4.1.1-1 [25.2 kB]
+Get:3 http://ua.archive.ubuntu.com/ubuntu jammy/main amd64 wireguard-tools amd64 1.0.20210914-1ubuntu2 [86.9 kB]
+Get:4 http://ua.archive.ubuntu.com/ubuntu jammy/universe amd64 wireguard all 1.0.20210914-1ubuntu2 [3,114 B]
+Get:5 http://ua.archive.ubuntu.com/ubuntu jammy/universe amd64 resolvconf all 1.84ubuntu1 [54.7 kB]
+Fetched 194 kB in 0s (1,606 kB/s)     
+Preconfiguring packages ...
+Selecting previously unselected package libqrencode4:amd64.
+(Reading database ... 111109 files and directories currently installed.)
+Preparing to unpack .../libqrencode4_4.1.1-1_amd64.deb ...
+Unpacking libqrencode4:amd64 (4.1.1-1) ...
+Selecting previously unselected package qrencode.
+Preparing to unpack .../qrencode_4.1.1-1_amd64.deb ...
+Unpacking qrencode (4.1.1-1) ...
+Selecting previously unselected package wireguard-tools.
+Preparing to unpack .../wireguard-tools_1.0.20210914-1ubuntu2_amd64.deb ...
+Unpacking wireguard-tools (1.0.20210914-1ubuntu2) ...
+Selecting previously unselected package wireguard.
+Preparing to unpack .../wireguard_1.0.20210914-1ubuntu2_all.deb ...
+Unpacking wireguard (1.0.20210914-1ubuntu2) ...
+Selecting previously unselected package resolvconf.
+Preparing to unpack .../resolvconf_1.84ubuntu1_all.deb ...
+Unpacking resolvconf (1.84ubuntu1) ...
+Setting up libqrencode4:amd64 (4.1.1-1) ...
+Setting up qrencode (4.1.1-1) ...
+Setting up resolvconf (1.84ubuntu1) ...
+Created symlink /etc/systemd/system/sysinit.target.wants/resolvconf.service → /lib/systemd/system/resolvconf.service.
+Created symlink /etc/systemd/system/systemd-resolved.service.wants/resolvconf-pull-resolved.path → /lib/systemd/system/resolvconf-pull-resolved.path.
+Created symlink /etc/systemd/system/systemd-resolved.service.wants/resolvconf-pull-resolved.service → /lib/systemd/system/resolvconf-pull-resolved.service.
+Setting up wireguard-tools (1.0.20210914-1ubuntu2) ...
+wg-quick.target is a disabled or a static unit not running, not starting it.
+Setting up wireguard (1.0.20210914-1ubuntu2) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.8) ...
+Processing triggers for resolvconf (1.84ubuntu1) ...
+Scanning processes...                                                                                                                                                                                         
+Scanning candidates...                                                                                                                                                                                        
+Scanning linux images...                                                                                                                                                                                      
+
+Running kernel seems to be up-to-date.
+
+Restarting services...
+Service restarts being deferred:
+ systemctl restart networkd-dispatcher.service
+ systemctl restart unattended-upgrades.service
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+* Applying /etc/sysctl.d/10-console-messages.conf ...
+kernel.printk = 4 4 1 7
+* Applying /etc/sysctl.d/10-ipv6-privacy.conf ...
+net.ipv6.conf.all.use_tempaddr = 2
+net.ipv6.conf.default.use_tempaddr = 2
+* Applying /etc/sysctl.d/10-kernel-hardening.conf ...
+kernel.kptr_restrict = 1
+* Applying /etc/sysctl.d/10-magic-sysrq.conf ...
+kernel.sysrq = 176
+* Applying /etc/sysctl.d/10-network-security.conf ...
+net.ipv4.conf.default.rp_filter = 2
+net.ipv4.conf.all.rp_filter = 2
+* Applying /etc/sysctl.d/10-ptrace.conf ...
+kernel.yama.ptrace_scope = 1
+* Applying /etc/sysctl.d/10-zeropage.conf ...
+vm.mmap_min_addr = 65536
+* Applying /usr/lib/sysctl.d/50-default.conf ...
+kernel.core_uses_pid = 1
+net.ipv4.conf.default.rp_filter = 2
+net.ipv4.conf.default.accept_source_route = 0
+sysctl: setting key "net.ipv4.conf.all.accept_source_route": Invalid argument
+net.ipv4.conf.default.promote_secondaries = 1
+sysctl: setting key "net.ipv4.conf.all.promote_secondaries": Invalid argument
+net.ipv4.ping_group_range = 0 2147483647
+net.core.default_qdisc = fq_codel
+fs.protected_hardlinks = 1
+fs.protected_symlinks = 1
+fs.protected_regular = 1
+fs.protected_fifos = 1
+* Applying /usr/lib/sysctl.d/50-pid-max.conf ...
+kernel.pid_max = 4194304
+* Applying /usr/lib/sysctl.d/99-protect-links.conf ...
+fs.protected_fifos = 1
+fs.protected_hardlinks = 1
+fs.protected_regular = 2
+fs.protected_symlinks = 1
+* Applying /etc/sysctl.d/99-sysctl.conf ...
+* Applying /etc/sysctl.d/wg.conf ...
+net.ipv4.ip_forward = 1
+net.ipv6.conf.all.forwarding = 1
+* Applying /etc/sysctl.conf ...
+Created symlink /etc/systemd/system/multi-user.target.wants/wg-quick@wg0.service → /lib/systemd/system/wg-quick@.service.
+
+Client configuration
+
+The client name must consist of alphanumeric character(s). It may also include underscores or dashes and can't exceed 15 chars.
+Client name: cl1w
+Client WireGuard IPv4: 10.66.66.2
+Client WireGuard IPv6: fd42:42:42::2
+
+Here is your client config file as a QR Code:
+
+█████████████████████████████████████████████████████████████████████
+█████████████████████████████████████████████████████████████████████
+████ ▄▄▄▄▄ █ █ ██▀ ▀█▀▀▄▄█▄▄  █ ▀  ▄▀██ ▄▀▄▀▄▄▀▄█▄▀▄███  █ ▄▄▄▄▄ ████
+████ █   █ █  ▀▄▄██  ██▄▄█▀▀  ▀▄█▀▄█▀ ▀ ▄▄█▀▄▀█▄▀   ▀█ ▄ █ █   █ ████
+████ █▄▄▄█ █▀▀▄▀█▀██▄▀▀▀▄▀▀▄▄▄▀█ ▄▄▄ ██▀▀  █▀█ █▀██▀▄▀ ▄██ █▄▄▄█ ████
+████▄▄▄▄▄▄▄█▄█ ▀ ▀▄█▄▀▄█ ▀▄█▄█ █ █▄█ ▀ ▀▄▀▄▀▄▀ █ ▀▄▀ █▄▀▄█▄▄▄▄▄▄▄████
+████ ▄▀▀  ▄▀▀ ▄▄█ ▄▀█  █▀█ █ ▀ █▄ ▄▄ ▀▄▄▄▀▀██ ▀█ ▀█▀▀▄ █▄▀▀ █ ▄▄ ████
+████▀  █▀ ▄▄▀██▄█▀ ▄▀▄█▀██   ▄▀▄█▀▄▄▄▄▀▀▀▀▀ █ ██▀▄▄█    ▄ ▄▄██ █▀████
+████▄▄▀▄ ▀▄ ▀█▄█▀  █▄▄▄ ▀▄▀ ▀▄▄██▀█ █ ▀█   ▄▀█▄▄██▄ █▄ █▄▀  ▄▀▀█▀████
+████▄█████▄  █ ▄█▄ ▀▀▀█    ███ ▄ ▄ █▄▄▄ ▀██ ▀▄▀▄█▄  ▄▀▄█ ▄▀▄█▀▄▄▀████
+███████ █▀▄ ▄█▄ ▄▀▀▀▀█  █ █      ▀▀▀▀██▄▄█▀▄█▀▄▀▄ █  █  █▀▄▄▀█▀▄▄████
+█████▄█ ▄█▄▄▄▄█▀█▀▀▄█  ▀▀▀  █ ▄▄ ▀▄█▀ ▀▀▄▀█ ▀▄█▀▄█▀▀█▀▄ █▄ ▄ █▀▀ ████
+████▀██▄█ ▄███▄█ ▀▀█▄▄   ▄███  ▄█▀▀▀▄██ ▀▀█▄▄▀▄  ██ ▀▄▀██▄▄▀▀█▀ ▀████
+████▀█ ██▄▄▀ ▀█▄▄ ▄ █▀  ▀▀▀▄▀██▄▀ ▄▄█▀▀█▀▀▄ ▄█ ▄█▀█▀ ██ █ █▄▀█ ▄▄████
+█████▀▄▄▄█▄▀▀█  ▄  ▀█▄▄█▀▄█▀ █▄█ ▀ █  █ ▄▀█▀█▀ ▀▄▄▄█ ▄▀█▄  ▀▄█▄ ▀████
+████ ▀▀▄▀▄▄██ ▄▀   ██▀██▀▀▀▀███ █ █▄▄█ ▄▀█▄ ▀ ▄██▄█▄▄▀▄█▄ ▄█▀█ █▀████
+██████▄▀ ▄▄▄ ▀▀▄ ▀▄ ▄▄▄▄█▄▄▀ █▄▀ ▄▄▄ █▄  ▄█ ▄█    ▀█ ▄▀█ ▄▄▄ ▄▀▄█████
+████▀▀▀▀ █▄█ ▀▀██ ▀▀▀█▀▀ ▀▀ ▀▄▄  █▄█ ▄█ ▀▄█ ▀▀▀▄█ █ ▀█   █▄█ ▄▄█▄████
+████ ▄▀▀▄ ▄ ▄ █▄██▀▄███▄▀▄▀▀▀ █▀▄▄  ▄▀▄█▀▄▀ ▀▄ ▀▀▄█▄ ▀▀█▄▄▄  █▀▄▀████
+████▀▄▄   ▄ █ ▀▀  ▄▀ █▄▄▀▄█▄▀▄▄▀▀▀ ▀▄ ▄▀  █▀▀ ▄ ▄ ▀▀▀█▀   ▄▀ ▄▄██████
+████▀▄▀█▄▄▄█▄▄ ▀█▀▀▀▄██▀▀▄██▄ ▄▄▀▄▀▀▄█▄█▄   ███ ▄█▀█▀▀ █ ▄█ ▀▀▀ ▀████
+████▀ ▀  ▄▄▄▄▀  ▄▄ █  █  █▀ ▀█  ▀█ ▀▀█ █▀██▀▄▄ ▀▀▀█  █ █▄   ▀▄▀ █████
+████▀▄█▀█▄▄▀▄▀███▀▀▀█▀ █ █▄██▀ ▀▀▀▄█ ▀█▄▄█  █▄   ██  █ █▄██  ▄▄█ ████
+████▄▄█▀▄█▄ ▄▄▀▄ █  █▀███▄█▀ ▄█▄▀██ █▄ ▀███▀ ▀▄██▄█▀  ▄█▄ ▄ ▀▀ ▀█████
+█████▄█ ▀█▄█  ▀▀ ▄▀ ▄ ▄▄ ▄█  ▀▄█▄▄▀█▀▄▀▄  ▀█▄ █ █▄██▄  ██▀▄█▀▄▀█ ████
+████ ▄▄ ▀▀▄▀▀   ▄ ▄█ ▀█▀   ▄▄▄▄▀ █▀ ▀▄▄▀█ █ █▄█▄▄ ▀▄▀  ▀ ▀▀ █ █▀ ████
+██████▄█▄█▄█ ▀▄ ▄▀█▀▀█ ▄▀ █   █▄███ ▀█▀▄▄█▀▄▀█▀▀███  █ █▀█▀ ▀▀█▄█████
+████▀▀ ▄ ▄▄█▀▄██ ▀█▄██▀▀▀▀▀ █▄  ▄  █▀▄▀▀▄ █▀   ▄▄█▀ █▀▄ █▄▄█ █   ████
+████▄▄▄▄██▄▄▀█▀█▀█ █▀█▄▄▀ █▀ ▀▀█ ▄▄▄ █▀ ▀ ▀█▀█ ▄ ▀   ▀█▀ ▄▄▄ ▀▄██████
+████ ▄▄▄▄▄ █▀█  █▄▄▄█▀██▀█▀ ▀██▀ █▄█   ▀▀█  ▀  ▄ █▀ █▀▄▄ █▄█ ▄ ▄█████
+████ █   █ █▄ ▀▄▀ ▀▀▀█ ▄▀█▀▀ ▀▄█  ▄   █▄  ▀▀█  ▄  █▄█▄▀█ ▄▄ ▄▀▄▄▀████
+████ █▄▄▄█ █▀▄█▄▀▀▄▄▀ ▀▀ █▀▄ █▀▀  ▀▄ █▀ ██▀▀▀ █▄▄▄█▄ ▀▄ ▀ ▀█▄▄▄ █████
+████▄▄▄▄▄▄▄█▄▄█▄▄███▄▄▄▄▄██▄█▄▄▄█▄▄▄▄█▄▄▄▄█▄█▄▄██▄██▄▄▄▄▄█▄███▄▄▄████
+█████████████████████████████████████████████████████████████████████
+█████████████████████████████████████████████████████████████████████
+
+Your client config file is in /home/ra/wg0-client-cl1w.conf
+If you want to add more clients, you simply need to run this script another time!
+
+WireGuard is running.
+You can check the status of WireGuard with: systemctl status wg-quick@wg0
+
+
+If you don't have internet connectivity from your client, try to reboot the server.
