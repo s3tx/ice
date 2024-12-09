@@ -2,6 +2,7 @@
 #######################################
 #######################################
 sudo cat /etc/netplan/00-installer-config.yaml
+sudo nano /etc/netplan/00-installer-config.yaml
 # This is the network config written by 'subiquity'
 network:
   ethernets:
