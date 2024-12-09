@@ -1,1 +1,29 @@
-
+#######################################
+#######################################
+#######################################
+sudo cat /etc/netplan/00-installer-config.yaml
+sudo nano /etc/netplan/00-installer-config.yaml
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    ens18:
+      dhcp4: no
+      addresses:
+      - 10.0.108.106/24
+      routes:
+      - to: 192.168.1.0/24
+        via: 10.0.108.1
+    ens19:
+      dhcp4: no
+      addresses:
+      - 10.0.156.106/24
+      nameservers:
+          addresses: [10.0.156.105]
+    ens20:
+      dhcp4: no
+      addresses:
+      - 172.30.80.1/24
+  version: 2
+#######################################
+#######################################
+#######################################
