@@ -1,0 +1,1523 @@
+##
+##    Project: SDDC.Lab
+##    Authors: Luis Chanu & Rutger Blom
+##   Filename: software_sample.yml
+##
+---
+RootDirectory: "/Software"
+
+Software:
+
+  VMware:
+
+
+##
+##
+## ██    ██  ██████ ███████ ███    ██ ████████ ███████ ██████
+## ██    ██ ██      ██      ████   ██    ██    ██      ██   ██
+## ██    ██ ██      █████   ██ ██  ██    ██    █████   ██████
+##  ██  ██  ██      ██      ██  ██ ██    ██    ██      ██   ██
+##   ████    ██████ ███████ ██   ████    ██    ███████ ██   ██
+##
+    vCenter:
+      Installers:
+        "6.70U3B":
+          Name: vCenter Server v6.70 Update 3B
+          File: VMware-VCSA-all-6.7.0-15132721.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v6.7.0U3B"
+            URL:
+          Version: "6.7"
+          FileExt: iso
+          vSwitch: 6.6.0
+        "6.70U3F":
+          Name: vCenter Server v6.70 Update 3F
+          File: VMware-VCSA-all-6.7.0-15976714.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v6.7.0U3F"
+            URL:
+          Version: "6.7"
+          FileExt: iso
+          vSwitch: 6.6.0
+        "6.70U3G":
+          Name: vCenter Server v6.70 Update 3G
+          File: VMware-VCSA-all-6.7.0-16046470.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v6.7.0U3G"
+            URL:
+          Version: "6.7"
+          FileExt: iso
+          vSwitch: 6.6.0
+        "6.70U3J":
+          Name: vCenter Server v6.70 Update 3J
+          File: VMware-VCSA-all-6.7.0-16708996.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v6.7.0U3J"
+            URL:
+          Version: "6.7"
+          FileExt: iso
+          vSwitch: 6.6.0
+        "6.70U3L":
+          Name: vCenter Server v6.70 Update 3L
+          File: VMware-VCSA-all-6.7.0-17138064.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v6.7.0U3L"
+            URL:
+          Version: "6.7"
+          FileExt: iso
+          vSwitch: 6.6.0
+        "6.70U3P":
+          Name: vCenter Server v6.70 Update 3P
+          File: VMware-VCSA-all-6.7.0-18831133.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v6.7.0U3P"
+            URL:
+          Version: "6.7"
+          FileExt: iso
+          vSwitch: 6.6.0
+        "6.70U3S":
+          Name: vCenter Server v6.70 Update 3S
+          File: VMware-VCSA-all-6.7.0-20540798.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v6.7.0U3S"
+            URL:
+          Version: "6.7"
+          FileExt: iso
+          vSwitch: 6.6.0
+        "7.00":
+          Name: vCenter Server v7.00
+          File: VMware-VCSA-all-7.0.0-15952498.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.0
+        "7.00A":
+          Name: vCenter Server v7.00a
+          File: VMware-VCSA-all-7.0.0-16189094.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0A"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.0
+        "7.00B":
+          Name: vCenter Server v7.00b
+          File: VMware-VCSA-all-7.0.0-16386292.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0B"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.0
+        "7.00C":
+          Name: vCenter Server v7.00c
+          File: VMware-VCSA-all-7.0.0-16620007.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0C"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.0
+        "7.00D":
+          Name: vCenter Server v7.00d
+          File: VMware-VCSA-all-7.0.0-16749653.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0D"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.0
+        "7.00U1":
+          Name: vCenter Server v7.00 Update 1
+          File: VMware-VCSA-all-7.0.1-16860138.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U1"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.0
+        "7.00U1A":
+          Name: vCenter Server v7.00 Update 1A
+          File: VMware-VCSA-all-7.0.1-17004997.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U1A"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.0
+        "7.00U1C":
+          Name: vCenter Server v7.00 Update 1C
+          File: VMware-VCSA-all-7.0.1-17327517.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U1C"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.0
+        "7.00U1D":
+          Name: vCenter Server v7.00 Update 1D
+          File: VMware-VCSA-all-7.0.1-17491101.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U1D"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.0
+        "7.00U2":
+          Name: vCenter Server v7.00 Update 2
+          File: VMware-VCSA-all-7.0.2-17694817.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U2"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.2
+        "7.00U2A":
+          Name: vCenter Server v7.00 Update 2A
+          File: VMware-VCSA-all-7.0.2-17920168.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U2A"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.2
+        "7.00U2B":
+          Name: vCenter Server v7.00 Update 2B
+          File: VMware-VCSA-all-7.0.2-17958471.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U2B"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.2
+        "7.00U2C":
+          Name: vCenter Server v7.00 Update 2C
+          File: VMware-VCSA-all-7.0.2-18356314.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U2C"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.2
+        "7.00U2D":
+          Name: vCenter Server v7.00 Update 2D
+          File: VMware-VCSA-all-7.0.2-18455184.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U2D"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.2
+        "7.00U3":
+          Name: vCenter Server v7.00 Update 3
+          File: VMware-VCSA-all-7.0.3-18700403.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U3"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3A":
+          Name: vCenter Server v7.00 Update 3A
+          File: VMware-VCSA-all-7.0.3-18778458.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U3A"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3B":
+          Name: vCenter Server v7.00 Update 3B
+          File: VMware-VCSA-all-7.0.3-18901211.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U3B"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3C":
+          Name: vCenter Server v7.00 Update 3C
+          File: VMware-VCSA-all-7.0.3-19234570.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U3C"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3D":
+          Name: vCenter Server v7.00 Update 3D
+          File: VMware-VCSA-all-7.0.3-19480866.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U3D"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3E":
+          Name: vCenter Server v7.00 Update 3E
+          File: VMware-VCSA-all-7.0.3-19717403.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U3E"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3F":
+          Name: vCenter Server v7.00 Update 3F
+          File: VMware-VCSA-all-7.0.3-20051473.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U3F"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3G":
+          Name: vCenter Server v7.00 Update 3G
+          File: VMware-VCSA-all-7.0.3-20150588.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U3G"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3H":
+          Name: vCenter Server v7.00 Update 3H
+          File: VMware-VCSA-all-7.0.3-20395099.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U3H"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3I":
+          Name: vCenter Server v7.00 Update 3I
+          File: VMware-VCSA-all-7.0.3-20845200.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U3I"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3J":
+          Name: vCenter Server v7.00 Update 3J
+          File: VMware-VCSA-all-7.0.3-20990077.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U3J"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3L":
+          Name: vCenter Server v7.00 Update 3L
+          File: VMware-VCSA-all-7.0.3-21477706.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U3L"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3M":
+          Name: vCenter Server v7.00 Update 3M
+          File: VMware-VCSA-all-7.0.3-21784236.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U3M"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3N":
+          Name: vCenter Server v7.00 Update 3N
+          File: VMware-VCSA-all-7.0.3-21958406.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U3N"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3P":
+          Name: vCenter Server v7.00 Update 3P
+          File: VMware-VCSA-all-7.0.3-22837322.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U3P"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3S":
+          Name: vCenter Server v7.00 Update 3S
+          File: VMware-VCSA-all-7.0.3-24201990.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v7.0.0U3S"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "8.00":
+          Name: vCenter Server v8.00
+          File: VMware-VCSA-all-8.0.0-20519528.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v8.00"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.0
+        "8.00A":
+          Name: vCenter Server v8.00A
+          File: VMware-VCSA-all-8.0.0-20920323.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v8.00A"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.0
+        "8.00B":
+          Name: vCenter Server v8.00B
+          File: VMware-VCSA-all-8.0.0-21216066.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v8.00B"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.0
+        "8.00C":
+          Name: vCenter Server v8.00C
+          File: VMware-VCSA-all-8.0.0-21457384.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v8.00C"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.0
+        "8.00U1":
+          Name: vCenter Server v8.00 Update 1
+          File: VMware-VCSA-all-8.0.1-21560480.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v8.00U1"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.0
+        "8.00U1A":
+          Name: vCenter Server v8.00 Update 1A
+          File: VMware-VCSA-all-8.0.1-21815093.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v8.00U1A"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.0
+        "8.00U1B":
+          Name: vCenter Server v8.00 Update 1B
+          File: VMware-VCSA-all-8.0.1-21860503.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v8.00U1B"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.0
+        "8.00U1C":
+          Name: vCenter Server v8.00 Update 1C
+          File: VMware-VCSA-all-8.0.1-22088981.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v8.00U1C"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.0
+        "8.00U2":
+          Name: vCenter Server v8.00 Update 2
+          File: VMware-VCSA-all-8.0.2-22385739.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v8.00U2"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.0
+        "8.00U2A":
+          Name: vCenter Server v8.00 Update 2A
+          File: VMware-VCSA-all-8.0.2-22617221.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v8.00U2A"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.0
+        "8.00U2B":
+          Name: vCenter Server v8.00 Update 2B
+          File: VMware-VCSA-all-8.0.2-23319993.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v8.00U2B"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.0
+        "8.00U2C":
+          Name: vCenter Server v8.00 Update 2C
+          File: VMware-VCSA-all-8.0.2-23504390.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v8.00U2C"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.0
+        "8.00U3":
+          Name: vCenter Server v8.00 Update 3
+          File: VMware-VCSA-all-8.0.3-24022515.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v8.00U3"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.3
+        "8.00U3B":
+          Name: vCenter Server v8.00 Update 3B
+          File: VMware-VCSA-all-8.0.3-24262322.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v8.00U3B"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.3
+        "8.00U3C":
+          Name: vCenter Server v8.00 Update 3C
+          File: VMware-VCSA-all-8.0.3-24305161.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v8.00U3C"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.3
+        "8.00U3D":
+          Name: vCenter Server v8.00 Update 3D
+          File: VMware-VCSA-all-8.0.3-24322831.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vCenter/v8.00U3D"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.3
+
+
+##
+##
+## ███████ ███████ ██   ██ ██
+## ██      ██       ██ ██  ██
+## █████   ███████   ███   ██
+## ██           ██  ██ ██  ██
+## ███████ ███████ ██   ██ ██
+##
+    ESXi:
+      Installers:
+        "6.70U3B":
+          Name: ESXi v6.70 Update 3B
+          File: VMware-VMvisor-Installer-201912001-15160138.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v6.7.0U3B"
+            URL:
+          Version: "6.7"
+          FileExt: iso
+          vSwitch: 6.6.0
+        "7.00":
+          Name: ESXi v7.0.0
+          File: VMware-VMvisor-Installer-7.0.0-15843807.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v7.0.0"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.0
+        "7.00B":
+          Name: ESXi 7.00B
+          File: VMware-VMvisor-Installer-7.0b-16324942.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v7.0.0B"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.0
+        "7.00U1":
+          Name: ESXi 7.00 Update 1
+          File: VMware-VMvisor-Installer-7.0U1-16850804.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v7.0.0U1"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.0
+        "7.00U1C":
+          Name: ESXi 7.00 Update 1C
+          File: VMware-VMvisor-Installer-7.0U1c-17325551.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v7.0.0U1C"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.0
+        "7.00U2":
+          Name: ESXi 7.00 Update 2
+          File: VMware-VMvisor-Installer-7.0U2-17630552.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v7.0.0U2"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.2
+        "7.00U2A":
+          Name: ESXi 7.00 Update 2A
+          File: VMware-VMvisor-Installer-7.0U2a-17867351.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v7.0.0U2A"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.2
+        "7.00U3":
+          Name: ESXi 7.00 Update 3
+          File: VMware-VMvisor-Installer-7.0U3-18644231.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v7.0.0U3"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3B":
+          Name: ESXi 7.00 Update 3B
+          File: VMware-VMvisor-Installer-7.0U3b-18905247.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v7.0.0U3B"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3C":
+          Name: ESXi 7.00 Update 3C
+          File: VMware-VMvisor-Installer-7.0U3c-19193900.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v7.0.0U3C"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3D":
+          Name: ESXi 7.00 Update 3D
+          File: VMware-VMvisor-Installer-7.0U3d-19482537.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v7.0.0U3D"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3F":
+          Name: ESXi 7.00 Update 3F
+          File: VMware-VMvisor-Installer-7.0U3f-20036589.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v7.0.0U3F"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3G":
+          Name: ESXi 7.00 Update 3G
+          File: VMware-VMvisor-Installer-7.0U3g-20328353.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v7.0.0U3G"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3L":
+          Name: ESXi 7.00 Update 3L
+          File: VMware-VMvisor-Installer-7.0U3l-21424296.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v7.0.0U3L"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "7.00U3N":
+          Name: ESXi 7.00 Update 3N
+          File: VMware-VMvisor-Installer-7.0U3n-21930508.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v7.0.0U3N"
+            URL:
+          Version: "7.0"
+          FileExt: iso
+          vSwitch: 7.0.3
+        "8.00":
+          Name: ESXi 8.00
+          File: VMware-VMvisor-Installer-8.0-20513097.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v8.00"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.0
+        "8.00B":
+          Name: ESXi 8.00B
+          File: VMware-VMvisor-Installer-8.0b-21203435.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v8.00B"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 7.0.0
+        "8.00U1":
+          Name: ESXi 8.00 Update 1
+          File: VMware-VMvisor-Installer-8.0U1-21495797.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v8.00U1"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.0
+        "8.00U1A":
+          Name: ESXi 8.00 Update 1A
+          File: VMware-VMvisor-Installer-8.0U1a-21813344.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v8.00U1A"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.0
+        "8.00U2":
+          Name: ESXi 8.00 Update 2
+          File: VMware-VMvisor-Installer-8.0U2-22380479.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v8.00U2"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.0
+        "8.00U2B":
+          Name: ESXi 8.00 Update 2B
+          File: VMware-VMvisor-Installer-8.0U2b-23305546.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v8.00U2B"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.0
+        "8.00U3":
+          Name: ESXi 8.00 Update 3
+          File: VMware-VMvisor-Installer-8.0U3-24022510.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v8.00U3"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.3
+        "8.00U3B":
+          Name: ESXi 8.00 Update 3B
+          File: VMware-VMvisor-Installer-8.0U3b-24280767.x86_64.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ESXi/v8.00U3B"
+            URL:
+          Version: "8.0"
+          FileExt: iso
+          vSwitch: 8.0.3
+
+
+##
+##
+## ███    ██ ███████ ██   ██
+## ████   ██ ██       ██ ██
+## ██ ██  ██ ███████   ███
+## ██  ██ ██      ██  ██ ██
+## ██   ████ ███████ ██   ██
+##
+    NSXT:
+      Installers:
+        "3.0.0":
+          Name: NSX Transformers v3.0.0
+          File: nsx-unified-appliance-3.0.0.0.0.15946739.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.0.0"
+            URL:
+          Version: "3.0"
+          FileExt: ova
+        "3.0.1":
+          Name: NSX Transformers v3.0.1
+          File: nsx-unified-appliance-3.0.1.0.0.16404476.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.0.1"
+            URL:
+          Version: "3.0"
+          FileExt: ova
+        "3.0.1.1":
+          Name: NSX Transformers v3.0.1.1
+          File: nsx-unified-appliance-3.0.1.1.0.16556500.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.0.1.1"
+            URL:
+          Version: "3.0"
+          FileExt: ova
+        "3.0.2":
+          Name: NSX Transformers v3.0.2
+          File: nsx-unified-appliance-3.0.2.0.0.16887203.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.0.2"
+            URL:
+          Version: "3.0"
+          FileExt: ova
+        "3.0.3.1":
+          Name: NSX Transformers v3.0.3.1
+          File: nsx-unified-appliance-3.0.3.1.0.19067114.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.0.3.1"
+            URL:
+          Version: "3.0"
+          FileExt: ova
+        "3.1.0":
+          Name: NSX Transformers v3.1.0
+          File: nsx-unified-appliance-3.1.0.0.0.17107171.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.1.0"
+            URL:
+          Version: "3.1"
+          FileExt: ova
+        "3.1.1":
+          Name: NSX Transformers v3.1.1
+          File: nsx-unified-appliance-3.1.1.0.0.17483186.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.1.1"
+            URL:
+          Version: "3.1"
+          FileExt: ova
+        "3.1.2":
+          Name: NSX Transformers v3.1.2
+          File: nsx-unified-appliance-3.1.2.0.0.17883600.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.1.2"
+            URL:
+          Version: "3.1"
+          FileExt: ova
+        "3.1.2.1":
+          Name: NSX Transformers v3.1.2.1
+          File: nsx-unified-appliance-3.1.2.1.0.17975796.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.1.2.1"
+            URL:
+          Version: "3.1"
+          FileExt: ova
+        "3.1.3":
+          Name: NSX Transformers v3.1.3
+          File: nsx-unified-appliance-3.1.3.0.0.18329005.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.1.3"
+            URL:
+          Version: "3.1"
+          FileExt: ova
+        "3.1.3.1":
+          Name: NSX Transformers v3.1.3.1
+          File: nsx-unified-appliance-3.1.3.1.0.18504672.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.1.3.1"
+            URL:
+          Version: "3.1"
+          FileExt: ova
+        "3.1.3.3":
+          Name: NSX Transformers v3.1.3.3
+          File: nsx-unified-appliance-3.1.3.3.0.18844962.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.1.3.3"
+            URL: 
+          Version: "3.1"
+          FileExt: ova
+        "3.1.3.5":
+          Name: NSX Transformers v3.1.3.5
+          File: nsx-unified-appliance-3.1.3.5.0.19068437.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.1.3.5"
+            URL: 
+          Version: "3.1"
+          FileExt: ova
+        "3.1.3.6":
+          Name: NSX Transformers v3.1.3.6
+          File: nsx-unified-appliance-3.1.3.6.0.19278632.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.1.3.6"
+            URL: 
+          Version: "3.1"
+          FileExt: ova
+        "3.1.3.7":
+          Name: NSX Transformers v3.1.3.7
+          File: nsx-unified-appliance-3.1.3.7.0.19380482.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.1.3.7"
+            URL: 
+          Version: "3.1"
+          FileExt: ova
+        "3.2.0":
+          Name: NSX Transformers v3.2.0
+          File: nsx-unified-appliance-3.2.0.0.0.19067081.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.2.0"
+            URL: 
+          Version: "3.2"
+          FileExt: ova
+        "3.2.0.1":
+          Name: NSX Transformers v3.2.0.1
+          File: nsx-unified-appliance-3.2.0.1.0.19232400.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.2.0.1"
+            URL: 
+          Version: "3.2"
+          FileExt: ova
+        "3.2.1":
+          Name: NSX Transformers v3.2.1
+          File: nsx-unified-appliance-3.2.1.0.0.19801963.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.2.1"
+            URL: 
+          Version: "3.2"
+          FileExt: ova
+        "3.2.1.1":
+          Name: NSX Transformers v3.2.1.1
+          File: nsx-unified-appliance-3.2.1.1.0.20115694.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.2.1.1"
+            URL: 
+          Version: "3.2"
+          FileExt: ova
+        "3.2.1.2":
+          Name: NSX Transformers v3.2.1.2
+          File: nsx-unified-appliance-3.2.1.2.0.20541216.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.2.1.2"
+            URL: 
+          Version: "3.2"
+          FileExt: ova
+        "3.2.2":
+          Name: NSX Transformers v3.2.2
+          File: nsx-unified-appliance-3.2.2.0.0.20737190.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.2.2"
+            URL: 
+          Version: "3.2"
+          FileExt: ova
+        "3.2.2.1":
+          Name: NSX Transformers v3.2.2.1
+          File: nsx-unified-appliance-3.2.2.1.0.21487565.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.2.2.1"
+            URL: 
+          Version: "3.2"
+          FileExt: ova
+        "3.2.3":
+          Name: NSX Transformers v3.2.3
+          File: nsx-unified-appliance-3.2.3.0.0.21703641.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.2.3"
+            URL: 
+          Version: "3.2"
+          FileExt: ova
+        "3.2.3.1":
+          Name: NSX Transformers v3.2.3.1
+          File: nsx-unified-appliance-3.2.3.1.0.22104638.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.2.3.1"
+            URL: 
+          Version: "3.2"
+          FileExt: ova
+        "3.2.4.1":
+          Name: NSX Transformers v3.2.4.1
+          File: nsx-unified-appliance-3.2.4.1.0.24309039.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v3.2.4.1"
+            URL: 
+          Version: "3.2"
+          FileExt: ova
+        "4.0.0.1":
+          Name: NSX Transformers v4.0.0.1
+          File: nsx-unified-appliance-4.0.0.1.0.20159694.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v4.0.0.1"
+            URL: 
+          Version: "4.0"
+          FileExt: ova
+        "4.0.1.1":
+          Name: NSX Transformers v4.0.1.1
+          File: nsx-unified-appliance-4.0.1.1.0.20598732.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v4.0.1.1"
+            URL: 
+          Version: "4.0"
+          FileExt: ova
+        "4.1.0.2":
+          Name: NSX Transformers v4.1.0.2
+          File: nsx-unified-appliance-4.1.0.2.0.21761695.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v4.1.0.2"
+            URL: 
+          Version: "4.1"
+          FileExt: ova
+        "4.1.1":
+          Name: NSX Transformers v4.1.1
+          File: nsx-unified-appliance-4.1.1.0.0.22224317.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v4.1.1"
+            URL: 
+          Version: "4.1"
+          FileExt: ova
+        "4.1.2":
+          Name: NSX Transformers v4.1.2
+          File: nsx-unified-appliance-4.1.2.0.0.22589046.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v4.1.2"
+            URL: 
+          Version: "4.1"
+          FileExt: ova
+        "4.1.2.1":
+          Name: NSX Transformers v4.1.2.1
+          File: nsx-unified-appliance-4.1.2.1.0.22667794.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v4.1.2.1"
+            URL: 
+          Version: "4.1"
+          FileExt: ova
+        "4.1.2.3":
+          Name: NSX Transformers v4.1.2.3
+          File: nsx-unified-appliance-4.1.2.3.0.23382420.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v4.1.2.3"
+            URL: 
+          Version: "4.1"
+          FileExt: ova
+        "4.1.2.4":
+          Name: NSX Transformers v4.1.2.4
+          File: nsx-unified-appliance-4.1.2.4.0.23786742.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v4.1.2.4"
+            URL: 
+          Version: "4.1"
+          FileExt: ova
+        "4.1.2.5":
+          Name: NSX Transformers v4.1.2.5
+          File: nsx-unified-appliance-4.1.2.5.0.24150847.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v4.1.2.5"
+            URL: 
+          Version: "4.1"
+          FileExt: ova
+        "4.2.0.0":
+          Name: NSX Transformers v4.2.0.0
+          File: nsx-unified-appliance-4.2.0.0.0.24105821.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v4.2.0.0"
+            URL: 
+          Version: "4.2"
+          FileExt: ova
+        "4.2.0.1":
+          Name: NSX Transformers v4.2.0.1
+          File: nsx-unified-appliance-4.2.0.1.0.24210165.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v4.2.0.1"
+            URL: 
+          Version: "4.2"
+          FileExt: ova
+        "4.2.0.2":
+          Name: NSX Transformers v4.2.0.2
+          File: nsx-unified-appliance-4.2.0.2.0.24278659.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v4.2.0.2"
+            URL: 
+          Version: "4.2"
+          FileExt: ova
+        "4.2.1.0":
+          Name: NSX Transformers v4.2.1.0
+          File: nsx-unified-appliance-4.2.1.0.0.24302016.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v4.2.1.0"
+            URL: 
+          Version: "4.2"
+          FileExt: ova
+        "4.2.1.1":
+          Name: NSX Transformers v4.2.1.1
+          File: nsx-unified-appliance-4.2.1.1.0.24405896.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v4.2.1.1"
+            URL: 
+          Version: "4.2"
+          FileExt: ova
+        "4.2.1.2":
+          Name: NSX Transformers v4.2.1.2
+          File: nsx-unified-appliance-4.2.1.2.0.24476732.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/NSX-T/v4.2.1.2"
+            URL: 
+          Version: "4.2"
+          FileExt: ova
+
+
+##
+##
+## ██       ██████   ██████      ██ ███    ██ ███████ ██  ██████  ██   ██ ████████
+## ██      ██    ██ ██           ██ ████   ██ ██      ██ ██       ██   ██    ██
+## ██      ██    ██ ██   ███     ██ ██ ██  ██ ███████ ██ ██   ███ ███████    ██
+## ██      ██    ██ ██    ██     ██ ██  ██ ██      ██ ██ ██    ██ ██   ██    ██
+## ███████  ██████   ██████      ██ ██   ████ ███████ ██  ██████  ██   ██    ██
+##
+    vRLI:
+      Installers:
+        "8.1.1":
+          Name: vRealize Log Insight v8.1.1
+          File: VMware-vRealize-Log-Insight-8.1.1.0-16281169_OVF10.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.1.1"
+            URL:
+          Version: "8.1"
+          FileExt: ova
+        "8.2.0":
+          Name: vRealize Log Insight v8.2.0
+          File: VMware-vRealize-Log-Insight-8.2.0.0-16957702_OVF10.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.2.0"
+            URL:
+          Version: "8.2"
+          FileExt: ova
+        "8.3.0":
+          Name: vRealize Log Insight v8.3.0
+          File: VMware-vRealize-Log-Insight-8.3.0.0-17494646_OVF10.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.3.0"
+            URL:
+          Version: "8.3"
+          FileExt: ova
+        "8.4.0":
+          Name: vRealize Log Insight v8.4.0
+          File: VMware-vRealize-Log-Insight-8.4.0.0-17828109_OVF10.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.4.0"
+            URL:
+          Version: "8.4"
+          FileExt: ova
+        "8.4.1":
+          Name: vRealize Log Insight v8.4.1
+          File: VMware-vRealize-Log-Insight-8.4.1.0-18136317_OVF10.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.4.1"
+            URL:
+          Version: "8.4"
+          FileExt: ova
+        "8.6.0":
+          Name: vRealize Log Insight v8.6.0
+          File: VMware-vRealize-Log-Insight-8.6.0.0-18703301_OVF10.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.6.0"
+            URL:
+          Version: "8.6"
+          FileExt: ova
+        "8.6.1":
+          Name: vRealize Log Insight v8.6.1
+          File: VMware-vRealize-Log-Insight-8.6.1.0-18983934_OVF10.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.6.1"
+            URL:
+          Version: "8.6"
+          FileExt: ova
+        "8.6.2":
+          Name: vRealize Log Insight v8.6.2
+          File: VMware-vRealize-Log-Insight-8.6.2.0-19092412_OVF10.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.6.2"
+            URL:
+          Version: "8.6"
+          FileExt: ova
+        "8.8.0":
+          Name: vRealize Log Insight v8.8.0
+          File: VMware-vRealize-Log-Insight-8.8.0.0-19675011_OVF10.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.8.0"
+            URL:
+          Version: "8.8"
+          FileExt: ova
+        "8.8.2":
+          Name: vRealize Log Insight v8.8.2
+          File: VMware-vRealize-Log-Insight-8.8.2.0-20056468_OVF10.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.8.2"
+            URL:
+          Version: "8.8"
+          FileExt: ova
+        "8.10.0":
+          Name: vRealize Log Insight v8.10.0
+          File: VMware-vRealize-Log-Insight-8.10.0.0-20623770_OVF10.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.10.0"
+            URL:
+          Version: "8.10"
+          FileExt: ova
+        "8.10.2":
+          Name: vRealize Log Insight v8.10.2
+          File: VMware-vRealize-Log-Insight-8.10.2.0-21145187_OVF10.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.10.2"
+            URL:
+          Version: "8.10"
+          FileExt: ova
+        "8.12.0":
+          Name: vRealize Log Insight v8.12.0
+          File: VMware-vRealize-Log-Insight-8.12.0.0-21696970_OVF10.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.12.0"
+            URL:
+          Version: "8.12"
+          FileExt: ova
+        "8.14.0":
+          Name: vRealize Log Insight v8.14.0
+          File: VMware-vRealize-Log-Insight-8.14.0.0-22564181.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.14.0"
+            URL:
+          Version: "8.14"
+          FileExt: ova
+        "8.14.1":
+          Name: vRealize Log Insight v8.14.1
+          File: VMware-vRealize-Log-Insight-8.14.1.0-22806512.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.14.1"
+            URL:
+          Version: "8.14"
+          FileExt: ova
+        "8.16.0":
+          Name: vRealize Log Insight v8.16.0
+          File: VMware-vRealize-Log-Insight-8.16.0.0-23364779.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.16.0"
+            URL:
+          Version: "8.16"
+          FileExt: ova
+        "8.16.1":
+          Name: vRealize Log Insight v8.16.1
+          File: VMware-vRealize-Log-Insight-8.16.1.0-24029724.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.16.1"
+            URL:
+          Version: "8.16"
+          FileExt: ova
+        "8.18.0":
+          Name: vRealize Log Insight v8.18.0
+          File: VMware-vRealize-Log-Insight-8.18.0.0-24021974.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.18.0"
+            URL:
+          Version: "8.18"
+          FileExt: ova
+        "8.18.1":
+          Name: vRealize Log Insight v8.18.1
+          File: VMware-vRealize-Log-Insight-8.18.1.0-24395570.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/vRLI/v8.18.1"
+            URL:
+          Version: "8.18"
+          FileExt: ova
+
+
+##
+##  █████  ██      ██████
+## ██   ██ ██      ██   ██
+## ███████ ██      ██████
+## ██   ██ ██      ██   ██
+## ██   ██ ███████ ██████
+##
+    ALB:
+      Installers:
+        "22.1.2":
+          Name: NSX Advanced Load Balancer
+          File: controller-22.1.2-9086.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ALB/v22.1.2"
+            URL:
+          Version: "22.1"
+          Password: "PASSWORD_AVAILABLE_ON_THE_VMWARE_CUSTOMER_CONNECT_PORTAL"
+          FileExt: ova
+        "22.1.3":
+          Name: NSX Advanced Load Balancer
+          File: controller_sha1-22.1.3-9096.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ALB/v22.1.3"
+            URL:
+          Version: "22.1"
+          Password: "PASSWORD_AVAILABLE_ON_THE_VMWARE_CUSTOMER_CONNECT_PORTAL"
+          FileExt: ova
+        "22.1.4":
+          Name: NSX Advanced Load Balancer
+          File: controller-22.1.4-9196.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ALB/v22.1.4"
+            URL:
+          Version: "22.1"
+          Password: "PASSWORD_AVAILABLE_ON_THE_VMWARE_CUSTOMER_CONNECT_PORTAL"
+          FileExt: ova
+        "22.1.5":
+          Name: NSX Advanced Load Balancer
+          File: controller-22.1.5-9093.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ALB/v22.1.5"
+            URL:
+          Version: "22.1"
+          Password: "PASSWORD_AVAILABLE_ON_THE_VMWARE_CUSTOMER_CONNECT_PORTAL"
+          FileExt: ova
+        "22.1.6":
+          Name: NSX Advanced Load Balancer
+          File: controller-22.1.6-9191.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ALB/v22.1.6"
+            URL:
+          Version: "22.1"
+          Password: "PASSWORD_AVAILABLE_ON_THE_VMWARE_CUSTOMER_CONNECT_PORTAL"
+          FileExt: ova
+        "30.1.1":
+          Name: NSX Advanced Load Balancer
+          File: controller-30.1.1-9415.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ALB/v30.1.1"
+            URL:
+          Version: "30.1"
+          Password: "PASSWORD_AVAILABLE_ON_THE_VMWARE_CUSTOMER_CONNECT_PORTAL"
+          FileExt: ova
+        "30.1.2":
+          Name: NSX Advanced Load Balancer
+          File: controller-30.1.2-9093.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ALB/v30.1.2"
+            URL:
+          Version: "30.1"
+          Password: "PASSWORD_AVAILABLE_ON_THE_VMWARE_CUSTOMER_CONNECT_PORTAL"
+          FileExt: ova
+        "30.2.1":
+          Name: NSX Advanced Load Balancer
+          File: controller-30.2.1-9105.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ALB/v30.2.1"
+            URL:
+          Version: "30.2"
+          Password: "PASSWORD_AVAILABLE_ON_THE_VMWARE_CUSTOMER_CONNECT_PORTAL"
+          FileExt: ova
+        "30.2.2":
+          Name: NSX Advanced Load Balancer
+          File: controller-30.2.2-9108.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/ALB/v30.2.2"
+            URL:
+          Version: "30.2"
+          Password: "PASSWORD_AVAILABLE_ON_THE_VMWARE_CUSTOMER_CONNECT_PORTAL"
+          FileExt: ova
+
+
+##
+##
+## ██████  ███████ ██████  ██      ██  ██████  █████  ████████ ██  ██████  ███    ██
+## ██   ██ ██      ██   ██ ██      ██ ██      ██   ██    ██    ██ ██    ██ ████   ██
+## ██████  █████   ██████  ██      ██ ██      ███████    ██    ██ ██    ██ ██ ██  ██
+## ██   ██ ██      ██      ██      ██ ██      ██   ██    ██    ██ ██    ██ ██  ██ ██
+## ██   ██ ███████ ██      ███████ ██  ██████ ██   ██    ██    ██  ██████  ██   ████
+##
+    Replication:
+      Installers:
+        "8.6.0":
+          Name: vSphere Replication v8.6.0
+          File: VMWare-vSphere_Replication-8.6.0-20555483.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/Replication/v8.6.0"
+            URL:
+          Version: "8.6"
+          FileExt: iso
+        "8.6.0.1":
+          Name: vSphere Replication v8.6.0.1
+          File: VMWare-vSphere_Replication-8.6.0-21134478.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/Replication/v8.6.0.1"
+            URL:
+          Version: "8.6"
+          FileExt: iso
+        "8.7.0":
+          Name: vSphere Replication v8.7.0
+          File: VMware-vSphere_Replication-8.7.0-21591677.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/Replication/v8.7.0"
+            URL:
+          Version: "8.7"
+          FileExt: iso
+        "8.7.0.2":
+          Name: vSphere Replication v8.7.0.2
+          File: VMware-vSphere_Replication-8.7.0-21999688.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/Replication/v8.7.0.2"
+            URL:
+          Version: "8.7"
+          FileExt: iso
+        "8.7.0.3":
+          Name: vSphere Replication v8.7.0.3
+          File: VMware-vSphere_Replication-8.7.0-22359474.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/Replication/v8.7.0.3"
+            URL:
+          Version: "8.7"
+          FileExt: iso
+        "8.8.0.1":
+          Name: vSphere Replication v8.8.0.1
+          File: VMware-vSphere_Replication-8.8.0-22602641.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/Replication/v8.8.0.1"
+            URL:
+          Version: "8.8"
+          FileExt: iso
+        "8.8.0.2":
+          Name: vSphere Replication v8.8.0.2
+          File: VMware-vSphere_Replication-8.8.0-22795648.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/Replication/v8.8.0.2"
+            URL:
+          Version: "8.8"
+          FileExt: iso
+        "9.0.2.1":
+          Name: vSphere Replication v9.0.2.1
+          File: VMware-vSphere_Replication-9.0.2-24404698.iso
+          Location:
+            Local: "{{ RootDirectory }}/VMware/Replication/v9.0.2.1"
+            URL:
+          Version: "9.0"
+          FileExt: iso
+
+
+##
+##  ██████ ██       ██████  ██    ██ ██████      ██████  ██    ██ ██ ██      ██████  ███████ ██████
+## ██      ██      ██    ██ ██    ██ ██   ██     ██   ██ ██    ██ ██ ██      ██   ██ ██      ██   ██
+## ██      ██      ██    ██ ██    ██ ██   ██     ██████  ██    ██ ██ ██      ██   ██ █████   ██████
+## ██      ██      ██    ██ ██    ██ ██   ██     ██   ██ ██    ██ ██ ██      ██   ██ ██      ██   ██
+##  ██████ ███████  ██████   ██████  ██████      ██████   ██████  ██ ███████ ██████  ███████ ██   ██
+##                                                                                                  
+    CloudBuilder:
+      Installers:
+        "5.2.0":
+          Name: CloudBuilder
+          File: VMware-Cloud-Builder-5.2.0.0-24108943_OVF10.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/VCF/v5.2.0/CloudBuilder"
+            URL:
+          Version: "5.2"
+          FileExt: ova
+        "5.2.1":
+          Name: CloudBuilder
+          File: VMware-Cloud-Builder-5.2.1.0-24307856_OVF10.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/VCF/v5.2.1/CloudBuilder"
+            URL:
+          Version: "5.2"
+          FileExt: ova
+
+
+##
+## ███████ ██████  ██████   ██████ ███    ███  █████  ███    ██  █████   ██████  ███████ ██████
+## ██      ██   ██ ██   ██ ██      ████  ████ ██   ██ ████   ██ ██   ██ ██       ██      ██   ██
+## ███████ ██   ██ ██   ██ ██      ██ ████ ██ ███████ ██ ██  ██ ███████ ██   ███ █████   ██████
+##      ██ ██   ██ ██   ██ ██      ██  ██  ██ ██   ██ ██  ██ ██ ██   ██ ██    ██ ██      ██   ██
+## ███████ ██████  ██████   ██████ ██      ██ ██   ██ ██   ████ ██   ██  ██████  ███████ ██   ██
+##
+    SDDCManager:
+      Installers:
+        "5.2.0":
+          Name: SDDCManager
+          File: VCF-SDDC-Manager-Appliance-5.2.0.0-24108943.ova
+          Location:
+            Local: "{{ RootDirectory }}/VMware/VCF/v5.2.0/SDDCManager"
+            URL:
+          Version: "5.2"
+          FileExt: ova
+        "5.2.1":
+          Name: SDDCManager
+          File: 
+          Location:
+            Local: "{{ RootDirectory }}/VMware/VCF/v5.2.1/SDDCManager"
+            URL: VCF-SDDC-Manager-Appliance-5.2.1.0-24307856.ova
+          Version: "5.2"
+          FileExt: ova
+
+
+##
+## ██    ██  ██████ ███████     ██ ███    ███ ██████   ██████  ██████  ████████     ████████  ██████   ██████  ██
+## ██    ██ ██      ██          ██ ████  ████ ██   ██ ██    ██ ██   ██    ██           ██    ██    ██ ██    ██ ██
+## ██    ██ ██      █████       ██ ██ ████ ██ ██████  ██    ██ ██████     ██           ██    ██    ██ ██    ██ ██
+##  ██  ██  ██      ██          ██ ██  ██  ██ ██      ██    ██ ██   ██    ██           ██    ██    ██ ██    ██ ██
+##   ████    ██████ ██          ██ ██      ██ ██       ██████  ██   ██    ██           ██     ██████   ██████  ███████
+##
+
+    VCFImportTool:
+      Installers:
+        "5.2.0":
+          Name: VCFImportTool
+          File: vcf-brownfield-import-5.2.0.0-24108578.tar.gz
+          Location:
+            Local: "{{ RootDirectory }}/VMware/VCF/v5.2.0/VCFImportTool"
+            URL:
+          Version: "5.2.0"
+          FileExt: gz
+        "5.2.1":
+          Name: VCFImportTool
+          File: vcf-brownfield-import-5.2.1.0-24307788.tar.gz
+          Location:
+            Local: "{{ RootDirectory }}/VMware/VCF/v5.2.1/VCFImportTool"
+            URL:
+          Version: "5.2.1"
+          FileExt: gz
+
+
+##
+##
+## ██    ██ ██████  ██    ██ ███    ██ ████████ ██    ██     ██      ██ ███    ██ ██    ██ ██   ██
+## ██    ██ ██   ██ ██    ██ ████   ██    ██    ██    ██     ██      ██ ████   ██ ██    ██  ██ ██
+## ██    ██ ██████  ██    ██ ██ ██  ██    ██    ██    ██     ██      ██ ██ ██  ██ ██    ██   ███
+## ██    ██ ██   ██ ██    ██ ██  ██ ██    ██    ██    ██     ██      ██ ██  ██ ██ ██    ██  ██ ██
+##  ██████  ██████   ██████  ██   ████    ██     ██████      ███████ ██ ██   ████  ██████  ██   ██
+##
+  Ubuntu:
+    Server:
+      Installers:
+        "22.04":
+          Name: Ubuntu Server Live CD v22.04
+          File: jammy-live-server-amd64.iso
+          Location:
+            Local: "{{ RootDirectory }}/Ubuntu/Server/v22.04"
+            URL: "https://cdimage.ubuntu.com/ubuntu-server/jammy/daily-live/current"
+          Version: "22.04"
+          FileExt: iso
+        "24.04":
+          Name: Ubuntu Server Live CD v24.04
+          File: noble-live-server-amd64.iso
+          Location:
+            Local: "{{ RootDirectory }}/Ubuntu/Server/v24.04"
+            URL: "https://cdimage.ubuntu.com/ubuntu-server/noble/daily-live/current/"
+          Version: "24.04"
+          FileExt: iso
+
+
+##
+##
+## ██    ██ ██    ██  ██████  ███████     ██████   ██████  ██    ██ ████████ ███████ ██████
+## ██    ██  ██  ██  ██    ██ ██          ██   ██ ██    ██ ██    ██    ██    ██      ██   ██
+## ██    ██   ████   ██    ██ ███████     ██████  ██    ██ ██    ██    ██    █████   ██████
+##  ██  ██     ██    ██    ██      ██     ██   ██ ██    ██ ██    ██    ██    ██      ██   ██
+##   ████      ██     ██████  ███████     ██   ██  ██████   ██████     ██    ███████ ██   ██
+##
+  VyOS:
+    Router:
+      Installers:
+        Latest:
+          Name: VyOS Latest Rolling Nightly Build
+          File: vyos-rolling-latest.iso
+          Location: 
+            Local: "{{ RootDirectory }}/VyOS/Router/Latest"
+            URL:   https://api.github.com/repos/vyos/vyos-nightly-build/releases/latest
+          Version: "0.0"
+          FileExt: iso
+        Test:
+          Name: VyOS Latest Rolling Nightly Build for TESTING
+          File: vyos-rolling-latest.iso
+          Location: 
+            Local: "{{ RootDirectory }}/VyOS/Router/Test"
+            URL:   https://api.github.com/repos/vyos/vyos-nightly-build/releases/latest
+          Version: "0.0"
+          FileExt: iso
