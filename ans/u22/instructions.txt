@@ -1,0 +1,14 @@
+sudo apt update
+sudo apt upgrade
+sudo apt install mc
+sudo apt install tree
+#####################
+sudo apt install python3 python3-pip python-is-python3 xorriso p7zip-full git
+git clone https://github.com/s3tx/ice.git
+cp -r ~/ice/ans/u22/ ~/u22
+pip3 install --upgrade -r ~/u22/pip3_requirements.txt
+source ~/.profile
+ansible-galaxy collection install --upgrade -r ~/u22/requirements.yml
+ansible-playbook --ask-become-pass ~/u22/utils/Util_CreateSoftwareDir.yml
+#####################
+ansible-playbook -e @x1var.yml x1.yml
