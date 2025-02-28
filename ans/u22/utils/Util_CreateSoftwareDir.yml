@@ -1,0 +1,144 @@
+---
+- name: Util_CreateSoftwareDir.yml
+  hosts: localhost
+  vars_files:
+    - ../software.yml
+  tasks:
+
+##
+## Create a static version of software.yml to workaround an issue with downloading VyOS from GitHub (limit exceeded due to multiple iterations)
+##
+
+    - name: Create software.json with realized variables
+      ansible.builtin.copy:
+        content: "{{ lookup('template', '../software.yml') | from_yaml }}"
+        dest: "{{ lookup('env', 'HOME') }}/software.json"
+        mode: "775"
+
+    - name: Read realized variables from software.json into playbook
+      ansible.builtin.include_vars:
+        file: "{{ lookup('env', 'HOME') }}/software.json"
+
+    - name: Delete software.json file
+      ansible.builtin.file:
+        path: "{{ lookup('env', 'HOME') }}/software.json"
+        state: absent
+
+##
+## Set Software Repository RootDirectory Permissions
+##
+    - name: Set permissions on {{ RootDirectory }}
+      ansible.builtin.file:
+        path: "{{ RootDirectory }}"
+        state: directory
+        mode: "0777"
+      become: true
+
+##
+## VMware
+##
+    - name: Create VMware vCenter directories
+      ansible.builtin.file:
+        path: "{{ item.value.Location.Local }}"
+        state: directory
+        mode: "0777"
+      become: true
+      loop: "{{ Software.VMware.vCenter.Installers | dict2items }}"
+      when: Software.VMware.vCenter.Installers is defined
+
+    - name: Create VMware ESXi directories
+      ansible.builtin.file:
+        path: "{{ item.value.Location.Local }}"
+        state: directory
+        mode: "0777"
+      become: true
+      loop: "{{ Software.VMware.ESXi.Installers | dict2items }}"
+      when: Software.VMware.ESXi.Installers is defined
+
+    - name: Create VMware NSXT directories
+      ansible.builtin.file:
+        path: "{{ item.value.Location.Local }}"
+        state: directory
+        mode: "0777"
+      become: true
+      loop: "{{ Software.VMware.NSXT.Installers | dict2items }}"
+      when: Software.VMware.NSXT.Installers is defined
+
+    - name: Create VMware vRLI directories
+      ansible.builtin.file:
+        path: "{{ item.value.Location.Local }}"
+        state: directory
+        mode: "0777"
+      become: true
+      loop: "{{ Software.VMware.vRLI.Installers | dict2items }}"
+      when: Software.VMware.vRLI.Installers is defined
+
+    - name: Create VMware NSX Advanced Load Balancer directories
+      ansible.builtin.file:
+        path: "{{ item.value.Location.Local }}"
+        state: directory
+        mode: "0777"
+      become: true
+      loop: "{{ Software.VMware.ALB.Installers | dict2items }}"
+      when: Software.VMware.ALB.Installers is defined
+
+    - name: Create VMware Replication directories
+      ansible.builtin.file:
+        path: "{{ item.value.Location.Local }}"
+        state: directory
+        mode: "0777"
+      become: true
+      loop: "{{ Software.VMware.Replication.Installers | dict2items }}"
+      when: Software.VMware.Replication.Installers is defined
+
+    - name: Create VMware Cloud Builder directories
+      ansible.builtin.file:
+        path: "{{ item.value.Location.Local }}"
+        state: directory
+        mode: "0777"
+      become: true
+      loop: "{{ Software.VMware.CloudBuilder.Installers | dict2items }}"
+      when: Software.VMware.CloudBuilder.Installers is defined
+
+    - name: Create VMware SDDC Manager directories
+      ansible.builtin.file:
+        path: "{{ item.value.Location.Local }}"
+        state: directory
+        mode: "0777"
+      become: true
+      loop: "{{ Software.VMware.SDDCManager.Installers | dict2items }}"
+      when: Software.VMware.SDDCManager.Installers is defined
+
+    - name: Create VMware VCF Import Tool directories
+      ansible.builtin.file:
+        path: "{{ item.value.Location.Local }}"
+        state: directory
+        mode: "0777"
+      become: true
+      loop: "{{ Software.VMware.VCFImportTool.Installers | dict2items }}"
+      when: Software.VMware.VCFImportTool.Installers is defined
+
+
+##
+## Ubuntu
+##
+    - name: Create Ubuntu directories
+      ansible.builtin.file:
+        path: "{{ item.value.Location.Local }}"
+        state: directory
+        mode: "0777"
+      become: true
+      loop: "{{ Software.Ubuntu.Server.Installers | dict2items }}"
+      when: Software.Ubuntu.Server.Installers is defined
+
+##
+## VyOS
+##
+    - name: Create VyOS directories
+      ansible.builtin.file:
+        path: "{{ item.value.Location.Local }}"
+        state: directory
+        mode: "0777"
+      become: true
+      loop: "{{ Software.VyOS.Router.Installers | dict2items }}"
+      when: Software.VyOS.Router.Installers is defined
