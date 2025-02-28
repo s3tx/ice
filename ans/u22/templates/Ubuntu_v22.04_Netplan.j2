@@ -1,0 +1,14 @@
+network:
+  ethernets:
+    ens192:
+      addresses:
+        - {{ Nested_DNSServer.OS.Network.IPv4.Address }}/{{ Nested_DNSServer.OS.Network.IPv4.Prefix }}
+      routes:
+        - to: default
+          via: {{ Nested_DNSServer.OS.Network.IPv4.Gateway }}
+      nameservers:
+        addresses:
+          - {{ Nested_DNSServer.OS.Network.IPv4.DNS }}
+        search:
+          - {{ Common.DNS.Domain }}
+  version: 2
