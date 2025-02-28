@@ -1,0 +1,72 @@
+DEBUG:
+  DisplayDelayInSeconds: 5
+  DisplayVariables: true  # Enable debug output
+  DisplayVariables_DNS: true
+  KeepConfigFiles: false
+  KeepInstallerFiles: false
+
+Target:
+  Datastore: datastore1
+  Deployment: Host
+  FQDN: 10.0.200.11
+  ISOFolder: /iso
+  Password: 'VMware1!'
+  TempFolder: /home/ra/SDDC-Ubuntu
+  TemplateFolder: /home/ra/git/SDDC.Lab/templates
+  User: root
+
+Deploy:
+  Product:
+    DNSServer:
+      Deploy: true  # Enable DNS server deployment
+  Software:
+    Options:
+      UseLocalInstaller: True
+      KeepNewInstallers: True
+      UnmountISO: True
+    DNSServer:
+      Vendor:    "Ubuntu"
+      Product:   "Server"
+      Version:   "22.04"
+      Patch:     False
+      Config:    "Pod-240-Ubuntu.conf"
+      Installer: "Pod-240-Installer-Ubuntu"
+      Template:  "DNSServer_v22.04_runbook.j2"
+      Directory: "/Software/Ubuntu/Server/v22.04"
+      File:      "jammy-live-server-amd64.iso"
+      FileExt:   "iso"
+      URL:       "https://cdimage.ubuntu.com/ubuntu-server/jammy/daily-live/current"
+
+Common:
+  DNS:
+    Domain: asha.local
+  DiskProvisioning: thin
+  PKI:
+    ValidateCerts: false
+
+Nested_DNSServer:
+  FQDN: thoth-u22ansx
+  OS:
+    Credential:
+      Password: VMware1!
+      User: ra
+    Keyboard:
+      Layout: us
+      Variant: intl
+    Locale: en_US
+    Network:
+      IPv4:
+        Address: 10.0.200.114
+        DNS: 1.1.1.1
+        Gateway: 10.0.200.1
+        Prefix: '24'
+  VM:
+    Annotation: '*** Auto-Deployed by SDDC.Lab ***'
+    HardwareSettings:
+      CPU: 2
+      CoresPerSocket: 1
+      DiskSize: 100
+      Memory: 4096
+      PortGroup: vlan200x
+      Version: 13
+    VMName: thoth-u22ansx
